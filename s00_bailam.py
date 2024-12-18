@@ -5,7 +5,7 @@ get_24hformat_hour(hour_str)
 
 --- nopbai
 00 fork github repo tu bainopmau tu nguon duoiday
-   https://github.com/namgivu/toyaget24hformathourhourstr
+   https://github.com/chuongduong/toyaget24hformathourhourstr/blob/main/s00_bailam.py
 
 01 lam bai vao tep s00_bailam.py, chay Run de co ketqua tatca la 1
 02a mo github web, mo kiemtra tep s00_bailam.py, va lay diachi/url aka githubrepourl
