@@ -42,5 +42,32 @@ get_24hformat_hour('11 PM')            | 23                     | 12
 
 #region bailam
 def get_24hformat_hour(hour_str):
-  return 'todo'
+    # Chuẩn hóa chuỗi đầu vào: xóa khoảng trắng thừa và chuyển về chữ thường
+    hour_str = hour_str.strip().lower()
+    hour = 0
+    # Kiểm tra nếu chuỗi chứa "am" hoặc "pm"
+    if 'am' in hour_str or 'pm' in hour_str:
+        tam = 'pm' in hour_str  # Xác định giờ là PM hay không
+        hour_str = hour_str.replace('am', '').replace('pm', '').strip()  # Loại bỏ "am" và "pm"
+        # Tách giờ nếu có dấu ":"
+        if ':' in hour_str:
+            hour = int(hour_str.split(':')[0])
+        elif '' in hour_str:
+            hour = int(hour_str[:2])
+        else:
+            hour = int(hour_str)  # Nếu không có phút
+        # Chuyển đổi giờ PM
+        if tam and hour != 12:
+            hour += 12
+        # Chuyển đổi giờ AM đặc biệt (12 AM = 0)
+        elif not tam and hour == 12:
+            hour = 0
+    elif hour_str.isdigit() and len(hour_str) > 3:
+        # Định dạng 4 chữ số, ví dụ: "0309" -> lấy 2 chữ số đầu
+        hour = int(hour_str[:2])
+    elif ':' in hour_str:
+        # Định dạng "hh:mm", lấy phần giờ trước dấu ":"
+        hour = int(hour_str.split(':')[0])
+    # Trả về kết quả dưới dạng chuỗi
+    return str(hour)
 #endregion bailam
